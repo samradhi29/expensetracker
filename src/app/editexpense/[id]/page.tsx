@@ -2,10 +2,22 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { IndianRupee, CalendarDays, FileText, Type, StickyNote } from 'lucide-react';
+import { IndianRupee, CalendarDays, StickyNote, Type } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+
+const categories = [
+  "Food",
+  "Travel",
+  "Shopping",
+  "Bills",
+  "Health",
+  "Entertainment",
+  "Education",
+  "Groceries",
+  "Others",
+];
 
 export default function EditExpensePage() {
   const { id } = useParams();
@@ -43,7 +55,7 @@ export default function EditExpensePage() {
       });
   }, [id]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -66,10 +78,7 @@ export default function EditExpensePage() {
   if (error) return <p className="text-red-500 p-4">Error: {error}</p>;
 
   return (
-   <div className="min-h-screen bg-black p-6 flex flex-col items-center justify-center">
-
-    
-
+    <div className="min-h-screen bg-black p-6 flex flex-col items-center justify-center">
       <Card className="bg-black border border-slate-700 max-w-xl w-full shadow-md shadow-pink-300">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
@@ -79,17 +88,26 @@ export default function EditExpensePage() {
 
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Predefined categories dropdown */}
             <div className="relative">
               <Type className="absolute left-3 top-3.5 text-purple-400" size={18} />
-              <Input
+              <select
                 id="typeofexpense"
                 name="typeofexpense"
                 value={form.typeofexpense}
                 onChange={handleChange}
-                placeholder="Type of Expense"
                 required
-                className="bg-black text-white border-gray-600 pl-10"
-              />
+                className="bg-black text-white border border-gray-600 pl-10 w-full rounded focus:border-purple-500 py-2"
+              >
+                <option value="" disabled>
+                  Select Category
+                </option>
+                {categories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="relative">

@@ -61,13 +61,13 @@ export default function MonthlyExpensesChart() {
   };
 
   return (
-    <div className="bg-black min-h-screen flex flex-col items-center justify-center p-8">
+    <div className="bg-black min-h-screen flex flex-col items-center justify-center p-8 ">
      <h2 className="text-3xl font-extrabold mb-6 text-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent">
   Monthly Expenses
 </h2>
 
       {/* Chart container */}
-      <div className="w-full max-w-4xl h-[400px] bg-gradient-to-br from-black via-neutral-900 to-zinc-800 rounded-xl shadow-xl p-6">
+      <div className="w-full max-w-4xl h-[400px] bg-gradient-to-br from-black via-neutral-900 to-zinc-800 rounded-xl shadow-md p-6  shadow-pink-300">
         <Bar data={data} />
       </div>
     </div>

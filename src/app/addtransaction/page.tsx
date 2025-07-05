@@ -7,6 +7,18 @@ import { useState } from "react";
 import { IndianRupee, CalendarDays, StickyNote, Type } from "lucide-react";
 
 export default function Page() {
+  const categories = [
+    "Food",
+    "Travel",
+    "Shopping",
+    "Bills",
+    "Health",
+    "Entertainment",
+    "Education",
+    "Groceries",
+    "Others",
+  ];
+
   const [form, setForm] = useState({
     typeofexpense: '',
     description: '',
@@ -14,7 +26,7 @@ export default function Page() {
     amount: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -44,19 +56,30 @@ export default function Page() {
         <Card className="bg-black border border-gray-700 shadow-md rounded-xl shadow-pink-300">
           <CardContent className="p-8">
             <form onSubmit={handleSubmit} className="space-y-6 max-w-full mx-auto">
+              
+              {/* Category Select */}
               <div className="relative w-full">
                 <Type className="absolute left-3 top-3.5 text-purple-400" size={18} />
-                <Input
+                <select
                   id="typeofexpense"
                   name="typeofexpense"
                   value={form.typeofexpense}
                   onChange={handleChange}
-                  className="bg-black text-white border border-gray-600 pl-10 w-full focus:border-purple-500"
-                  placeholder="Type of Expense"
                   required
-                />
+                  className="bg-black text-white border border-gray-600 pl-10 pr-3 py-2 w-full rounded focus:border-purple-500 appearance-none"
+                >
+                  <option value="" disabled>
+                    Select Category
+                  </option>
+                  {categories.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
               </div>
 
+              {/* Description */}
               <div className="relative w-full">
                 <StickyNote className="absolute left-3 top-3.5 text-purple-400" size={18} />
                 <Input
@@ -70,6 +93,7 @@ export default function Page() {
                 />
               </div>
 
+              {/* Date */}
               <div className="relative w-full">
                 <CalendarDays className="absolute left-3 top-3.5 text-purple-400" size={18} />
                 <Input
@@ -83,6 +107,7 @@ export default function Page() {
                 />
               </div>
 
+              {/* Amount */}
               <div className="relative w-full">
                 <IndianRupee className="absolute left-3 top-3.5 text-purple-400" size={18} />
                 <Input
@@ -97,6 +122,7 @@ export default function Page() {
                 />
               </div>
 
+              {/* Submit Button */}
               <Button
                 type="submit"
                 className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold py-2 rounded shadow-md hover:shadow-lg transition-all"
@@ -110,4 +136,3 @@ export default function Page() {
     </div>
   );
 }
-

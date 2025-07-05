@@ -14,11 +14,15 @@ export interface IExpense extends Document {
 // 2. Schema definition
 const ExpenseSchema: Schema<IExpense> = new Schema(
   {
-    typeofexpense: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+  
+  typeofexpense: {
+  type: String,
+  required: true,
+  trim: true,
+  enum: ["Food", "Travel", "Shopping", "Bills", "Health", "Entertainment", "Education", "Groceries", "Others"],
+},
+
+    
     description: {
       type: String,
       trim: true,

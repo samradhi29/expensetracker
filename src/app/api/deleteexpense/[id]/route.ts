@@ -8,7 +8,7 @@ export async function DELETE(req: Request) {
 
     // Extract id param from URL pathname
     const url = new URL(req.url);
-    const id = url.pathname.split("/").pop(); // gets last part of URL path (id)
+    const id = url.pathname.split("/").pop(); 
 
     if (!id) {
       return NextResponse.json({ message: "Missing id parameter" }, { status: 400 });

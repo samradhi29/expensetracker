@@ -196,14 +196,14 @@ export default function ExpenseListPage() {
                       <td className="p-3 border border-neutral-800 text-center space-x-2 flex justify-center flex-wrap gap-2">
                         <Button
                           variant="outline"
-                          className="border-purple-300 text-white hover:shadow-md whitespace-nowrap"
+                          className="border-purple-300 text-white hover:shadow-md bg-black"
                           onClick={() => router.push(`/editexpense/${expense._id}`)}
                         >
                           Edit
                         </Button>
                         <Button
                           variant="outline"
-                          className="border-red-300 text-white hover:shadow-md whitespace-nowrap"
+                          className="border-red-300 text-white hover:shadow-md bg-black"
                           onClick={() => deleteExpense(expense._id)}
                         >
                           Delete
