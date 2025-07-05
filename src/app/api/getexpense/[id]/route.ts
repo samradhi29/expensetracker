@@ -1,15 +1,20 @@
+// src/app/api/getexpense/[id]/route.ts
+
 import { NextRequest, NextResponse } from "next/server";
 import { dbconnection } from "@/app/lib/dbconnection";
 import { Expense } from "@/app/lib/models/transaction";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(req: NextRequest) {
   try {
     await dbconnection();
 
-    const { id } = params;
+    // Extract id from the request URL
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // gets the [id] from the dynamic route
+
+    if (!id) {
+      return NextResponse.json({ message: "Missing ID parameter" }, { status: 400 });
+    }
 
     const expense = await Expense.findById(id);
 
@@ -23,3 +28,4 @@ export async function GET(
     return NextResponse.json({ message: "Error fetching expense" }, { status: 500 });
   }
 }
+
