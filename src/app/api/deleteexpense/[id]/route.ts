@@ -2,14 +2,17 @@ import { NextResponse } from "next/server";
 import { dbconnection } from "@/app/lib/dbconnection";
 import { Expense } from "@/app/lib/models/transaction";
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(req: Request) {
   try {
     await dbconnection();
 
-    const { id } = params;
+    // Extract id param from URL pathname
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // gets last part of URL path (id)
+
+    if (!id) {
+      return NextResponse.json({ message: "Missing id parameter" }, { status: 400 });
+    }
 
     const deletedExpense = await Expense.findByIdAndDelete(id);
 
