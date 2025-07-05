@@ -4,9 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { IndianRupee, CalendarDays, StickyNote, Type } from "lucide-react";
 
 export default function Page() {
+  const router = useRouter();
+
   const categories = [
     "Food",
     "Travel",
@@ -35,9 +38,14 @@ export default function Page() {
     const res = await fetch('/api/addexpense', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, amount: Number(form.amount) }),
     });
-    console.log("Form Submitted:", form);
+
+    if (res.ok) {
+      router.push('/listexpenses');
+    } else {
+      alert('Failed to add expense. Please try again.');
+    }
   };
 
   return (
