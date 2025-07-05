@@ -17,36 +17,36 @@ Track your expenses, set monthly budgets, and visualize your financial habits wi
 
 ---
 
-## 🧠 Key Features (Stage-wise)
+##  Key Features (Stage-wise)
 
 ### ✅ Stage 1: Basic Transaction Tracking
 
-- ➕ Add / ✏️ Edit /  Delete expenses
+-  Add / Edit /  Delete expenses
 - Fields: **amount, date, description**
 - 📃 Transaction list view
 - 📊 Monthly expenses bar chart
-- ✅ Basic form validation
+-  Basic form validation
 
 ---
 
 ### 🧩 Stage 2: Categories
 
 - All **Stage 1 features**, plus:
-- 📂 Predefined categories for each expense (Food, Travel, etc.)
-- 🥧 Category-wise Pie Chart
-- 🏠 Dashboard with:
-  - 💰 Total Expenses card
-  - 🧾 Category breakdown
+-  Predefined categories for each expense (Food, Travel, etc.)
+-  Category-wise Pie Chart
+-  Dashboard with:
+  -  Total Expenses card
+  -  Category breakdown
   - 📅 Most recent transactions
 
 ---
 
-### 💰 Stage 3: Budgeting + Insights
+###  Stage 3: Budgeting + Insights
 
 - All **Stage 2 features**, plus:
-- 📅 Set **Monthly Budgets** by category
+-  Set **Monthly Budgets** by category
 - 📈 Budget vs Actual Comparison Chart
-- 🧠 **Simple Spending Insights**:
+-  **Simple Spending Insights**:
   - Highlight over-budget categories
   - Calculate total saved
   - Display clear monthly financial tips
