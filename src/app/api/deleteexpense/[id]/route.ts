@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { dbconnection } from "@/app/lib/dbconnection";
 import { Expense } from "@/app/lib/models/transaction";
 
 export async function DELETE(
-  req: NextRequest,
+  req: Request,
   { params }: { params: { id: string } }
 ) {
   try {
